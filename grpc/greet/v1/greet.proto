@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+package greet.v1;
+
+option go_package = "github.com/Jun-Chang/my-cloud-endpoints/grpc/gen/greet/v1";
+
+message GreetRequest {
+  string name = 1;
+}
+
+message GreetResponse {
+  string greeting = 1;
+}
+
+service GreetService {
+  rpc Greet(GreetRequest) returns (GreetResponse) {
+    option (google.api.http) = {
+        get: "/greet/v1/greets/{name}"
+    };
+  }
+}

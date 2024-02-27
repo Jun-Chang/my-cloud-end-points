@@ -1,0 +1,14 @@
+type: google.api.Service
+config_version: 3
+name: FULL_ESP_SERVICE_NAME
+title: Cloud Endpoints + Cloud Run gRPC
+apis:
+  - name: greet.v1.GreetService
+usage:
+  rules:
+  - selector: greet.v1.GreetService.Greet
+    allow_unregistered_calls: true
+backend:
+  rules:
+    - selector: "*"
+      address: grpcs://BACKEND_HOST_NAME
